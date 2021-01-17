@@ -11,6 +11,10 @@
 		49042ACE25B4954A003CF563 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49042ACD25B4954A003CF563 /* ContentView.swift */; };
 		49042AD025B4954B003CF563 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49042ACF25B4954B003CF563 /* Assets.xcassets */; };
 		49042AD325B4954B003CF563 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49042AD225B4954B003CF563 /* Preview Assets.xcassets */; };
+		49042ADC25B495B5003CF563 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49042ADB25B495B5003CF563 /* PlayerView.swift */; };
+		49042AE025B49636003CF563 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49042ADF25B49636003CF563 /* Song.swift */; };
+		49042AE425B496EE003CF563 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49042AE325B496EE003CF563 /* PlayerService.swift */; };
+		49042AEC25B49E5A003CF563 /* SongImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49042AEB25B49E5A003CF563 /* SongImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +24,10 @@
 		49042ACF25B4954B003CF563 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49042AD225B4954B003CF563 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		49042AD425B4954B003CF563 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49042ADB25B495B5003CF563 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		49042ADF25B49636003CF563 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		49042AE325B496EE003CF563 /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		49042AEB25B49E5A003CF563 /* SongImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,8 @@
 			children = (
 				49042ACB25B4954A003CF563 /* SimpleMusicPlayerApp.swift */,
 				49042ACD25B4954A003CF563 /* ContentView.swift */,
+				49042AE625B49DE1003CF563 /* Player */,
+				49042ADF25B49636003CF563 /* Song.swift */,
 				49042ACF25B4954B003CF563 /* Assets.xcassets */,
 				49042AD425B4954B003CF563 /* Info.plist */,
 				49042AD125B4954B003CF563 /* Preview Content */,
@@ -67,6 +77,32 @@
 				49042AD225B4954B003CF563 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		49042AE625B49DE1003CF563 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				49042AE925B49E1B003CF563 /* ViewModel */,
+				49042AE825B49E11003CF563 /* View */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		49042AE825B49E11003CF563 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				49042ADB25B495B5003CF563 /* PlayerView.swift */,
+				49042AEB25B49E5A003CF563 /* SongImage.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		49042AE925B49E1B003CF563 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				49042AE325B496EE003CF563 /* PlayerService.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +174,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49042AE025B49636003CF563 /* Song.swift in Sources */,
+				49042AE425B496EE003CF563 /* PlayerService.swift in Sources */,
+				49042ADC25B495B5003CF563 /* PlayerView.swift in Sources */,
 				49042ACE25B4954A003CF563 /* ContentView.swift in Sources */,
+				49042AEC25B49E5A003CF563 /* SongImage.swift in Sources */,
 				49042ACC25B4954A003CF563 /* SimpleMusicPlayerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
