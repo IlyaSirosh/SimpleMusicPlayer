@@ -11,7 +11,12 @@ import SwiftUI
 struct SimpleMusicPlayerApp: App {
     var body: some Scene {
         WindowGroup {
-            PlayerView()
+            ZStack{
+                Color("backgroundColor")
+                    .ignoresSafeArea()
+                PlayerView()
+            }
+            
         }
     }
 }

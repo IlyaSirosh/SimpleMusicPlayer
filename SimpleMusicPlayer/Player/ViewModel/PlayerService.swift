@@ -11,13 +11,15 @@ class PlayerService: ObservableObject {
     @Published var currentSong: Song?
     @Published var state: PlayerState = PlayerState.nothingToPlay
     
-    func play(){
-        
+    func togglePlaying(){
+        switch state {
+        case .nothingToPlay, .paused:
+            state = .playing
+        case .playing:
+            state = .paused
+        }
     }
-    
-    func pause(){
-        
-    }
+
     
     func nextSong(){
         
@@ -25,6 +27,10 @@ class PlayerService: ObservableObject {
     
     func prevSong(){
         
+    }
+    
+    var isPlayingSong: Bool {
+        state == .playing
     }
 }
 

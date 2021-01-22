@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct PlayerView: View {
     @ObservedObject var service = PlayerService()
-    @State var trackTime: Float = 0.0
+    @State var trackTime: Float = 10.0
     var duration: Float = 100.0
     
     @State var volume: Float = 50.0
@@ -18,27 +17,51 @@ struct PlayerView: View {
     
     var body: some View {
         VStack {
-            SongImage(with: "gunsnroses")
+            SongImage(isSongPlaying: service.isPlayingSong
+//                      ,
+//                      imageName: "gunsnroses"
+            )
             
-            Text("Song Name")
-                .font(.title)
-        
-            
-            Slider(value: $trackTime, in: 0...duration)
-            
-            HStack {
-                Image(systemName: "backward.fill")
-                Image(systemName: "play.fill")
-                Image(systemName: "forward.fill")
+            HStack{
+                VStack(alignment: .leading) {
+                    Text("Song Name")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Text("Author")
+                        .font(.title2)
+                }
+                Spacer()
             }
+    
+        
+            TrackSlider(currentTime: $trackTime, timeLeft: .constant(4.41), duration: .constant(duration))
+         
             
-            Slider(value: $volume, in: 0...maxVolume)
+            TrackPlayControl(isPlayingSong: service.isPlayingSong,
+                             prev: service.prevSong,
+                             togglePlay: service.togglePlaying,
+                             next: service.nextSong)
+                .padding()
+                .foregroundColor(.primary)
+  
+            Slider(value: $volume, in: 0...maxVolume, minimumValueLabel: Image(systemName: "speaker.wave.1.fill"), maximumValueLabel: Image(systemName: "speaker.wave.3.fill")) {
+                Text("Volume")
+            }
+                .accentColor(.secondary)
+                .padding(.vertical)
+
         }
+        .padding()
+
     }
+    
+    
+
 }
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
         PlayerView()
+            .preferredColorScheme(.dark)
     }
 }

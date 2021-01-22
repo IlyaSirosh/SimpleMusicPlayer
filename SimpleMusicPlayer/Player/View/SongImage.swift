@@ -9,29 +9,38 @@ import SwiftUI
 
 struct SongImage: View {
     var name: String?
+    var isSongPlaying: Bool
     
-    init(with name: String? = nil){
+    init(isSongPlaying: Bool, imageName name: String? = nil){
+        self.isSongPlaying = isSongPlaying
         self.name = name
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            
-            ZStack{
-                Rectangle()
-                    .aspectRatio(1, contentMode: .fit)
-                    .foregroundColor(.clear)
-                
-                Rectangle()
-                    .frame(width: 0.6 * geometry.size.width, height: 0.6 * geometry.size.width)
-                    .foregroundColor(.secondary)
-                    .overlay(imageView)
-                    .clipped()
-                    .cornerRadius(15)
-
-            }
+        VStack {
+            Rectangle()
+                .aspectRatio(1, contentMode: .fit)
+                .foregroundColor(Color("backgroundColor"))
+                .cornerRadius(Const.cornerRadius)
+                .overlay(imageView)
+                .clipped()
+                .shadow(color: .secondary, radius: Const.shadowRadius, x: 0, y: Const.shadowYOffset)
+                .scaleEffect(imageScale)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .animation(.easeOut(duration: 0.25))
+
     }
+    
+    var imageScale: CGFloat{
+        isSongPlaying ? Const.imageScaleWhilePlaying : Const.imageScaleWhilePaused
+    }
+    
+    var shadowYOffset: CGFloat {
+        isSongPlaying ? 30 : 10
+    }
+    
+
     
     var imageView: some View {
         if let imageName = name {
@@ -45,16 +54,24 @@ struct SongImage: View {
                 Image(systemName: "music.note")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .foregroundColor(.secondary)
-                    .padding(30)
+                    .foregroundColor(Color("backgroundTintColor"))
+                    .padding()
             )
         }
+    }
+    
+    struct Const {
+        static let imageScaleWhilePlaying: CGFloat = 0.9
+        static let imageScaleWhilePaused: CGFloat = 0.6
+        static let cornerRadius: CGFloat = 15
+        static let shadowRadius: CGFloat = 30
+        static let shadowYOffset: CGFloat = 15
     }
 }
 
 struct SongImage_Previews: PreviewProvider {
     static var previews: some View {
-        SongImage()
-            .preferredColorScheme(.light)
+        SongImage(isSongPlaying: false)
+            .preferredColorScheme(.dark)
     }
 }
